@@ -1,0 +1,143 @@
+/* ================================
+   Main Waybar Style
+   ================================ */
+
+/* >>> Choose your theme here <<< */
+@import url("themes/catppuccin-mocha.css");
+/* @import url("themes/rosepine.css"); */
+
+/* ================================
+   Waybar styling using defined colors
+   ================================ */
+
+* {
+    min-height: 0;
+    min-width: 0;
+    font-family: "Ubuntu Nerd Font";
+    font-size: 14px;
+    font-weight: 600;
+    padding-right: 0.1rem;
+}
+
+window#waybar {
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    background-color: @base;
+}
+
+/* Workspaces */
+#workspaces {
+    padding-left: 0.1rem;
+}
+
+#workspaces button {
+    padding: 0.3rem 0.6rem;
+    margin: 0.4rem 0.25rem;
+    border-radius: 8px;
+    background-color: @surface0;
+    color: @lavender;
+}
+
+#workspaces button.active {
+    background-color: @surface1;
+    color: @pink;
+}
+
+#workspaces button.urgent {
+    background-color: @surface1;
+    color: @red;
+}
+
+/* Modules */
+
+#pulseaudio,
+#custom-power,
+#backlight,
+#custom-weather,
+#power-profiles-daemon,
+#custom-notification,
+#tray,
+#battery,
+#memory,
+#window,
+:active-view-transition-type #mpris {
+    padding: 0.3rem 0.6rem;
+    margin: 0.4rem 0.25rem;
+    border-radius: 8px;
+    background-color: @surface0;
+}
+
+#custom-sep {
+    padding: 0;
+    color: @overlay0;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+#backlight {
+    color: @yellow;
+}
+#tray {
+    color: @pink;
+}
+#custom-power {
+    color: @red;
+    padding-right: 0.8rem;
+}
+#battery {
+    color: @green;
+}
+
+#battery.charging {
+    background-color: alpha(@teal, 0.2);
+    color: @teal;
+}
+
+#battery.warning {
+    color: @peach;
+}
+#battery.critical {
+    color: @red;
+}
+#clock {
+    color: @mauve;
+}
+#window {
+    color: @lavender;
+}
+#pulseaudio {
+    color: @lavender;
+}
+#pulseaudio.muted {
+    color: @subtext0;
+}
+#power-profiles-daemon {
+    font-size: 16;
+    padding-right: 0.8rem;
+}
+#power-profiles-daemon.performance {
+    color: #f38ba8;
+}
+#power-profiles-daemon.balanced {
+    color: @rosewater;
+}
+#power-profiles-daemon.power-saver {
+    color: @green;
+}
+/* Clock Module */
+#clock,
+#custom-weather {
+    padding: 0.3rem 0.6rem;
+    margin: 0.4rem 0.25rem;
+    border-radius: 8px;
+    background-color: @surface0;
+    color: @mauve;
+}
+
+tooltip {
+    background-color: @surface0;
+    border: 2px solid @blue;
+    border-radius: 8px;
+}

@@ -1,0 +1,107 @@
+{
+  "layer": "bottom",
+  "position": "top",
+  "height": 38,
+  "spacing": 2,
+  "exclusive": true,
+  "gtk-layer-shell": true,
+  "passthrough": false,
+  "fixed-center": true,
+  "modules-left": ["niri/workspaces", "niri/window"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "tray",
+    "pulseaudio",
+    "backlight",
+    "power-profiles-daemon",
+    "battery",
+    "custom/power",
+  ],
+  "custom/spotify": {
+    "format": "  {}",
+    "return-type": "json",
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "spotifatius toggle-liked",
+    "on-click-middle": "playerctl -p spotify next",
+    "exec": "spotifatius monitor",
+  },
+
+  "niri/workspaces": {
+    "format": "{index}",
+  },
+
+  "niri/window": {
+    "format": "{title}",
+    "max-length": 30,
+  },
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 10,
+  },
+  "clock": {
+    "tooltip-format": "{calendar}",
+    "format": "  {:%H:%M}",
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": ["󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": "⚡ {capacity}%",
+    "format-plugged": "  {capacity}%",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", ""],
+    //"format-alt": "{time}",
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "  muted",
+    "format-icons": {
+      "headphone": "",
+      "default": [" ", " ", " "],
+    },
+    "on-click": "pavucontrol",
+  },
+  "custom/sep": {
+    "format": "|",
+    "tooltip": false,
+  },
+
+  "custom/notification": {
+    "escape": true,
+    "exec": "swaync-client -swb",
+    "exec-if": "which swaync-client",
+    "format": "{icon}",
+    "format-icons": {
+      "none": "󰅺",
+      "notification": "󰡟",
+    },
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "return-type": "json",
+    "tooltip": false,
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "󱑲",
+      "performance": "󱑴",
+      "balanced": "󱑳",
+      "power-saver": "󱑲",
+    },
+  },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "niri msg action quit",
+  },
+}
